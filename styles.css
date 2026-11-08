@@ -37,3 +37,116 @@
 .obcm-children {
     padding-left: var(--nav-indent);
 }
+
+/* ---------- 挂载管理面板（Modal） ---------- */
+
+.obcm-mgr-summary {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.obcm-mgr-empty {
+    color: var(--text-muted);
+    padding: 16px 0;
+}
+
+.obcm-mgr-group {
+    margin-bottom: 8px;
+}
+
+.obcm-mgr-group-title {
+    font-weight: 500;
+    color: var(--text-normal);
+    border-bottom: 1px solid var(--background-modifier-border);
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+}
+
+.obcm-mgr-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.obcm-mgr-row.is-invalid {
+    background-color: var(--background-modifier-hover);
+}
+
+.obcm-mgr-main {
+    min-width: 0;
+    flex: 1;
+}
+
+.obcm-mgr-name {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.obcm-mgr-name-text {
+    color: var(--text-normal);
+}
+
+.obcm-mgr-orig {
+    color: var(--text-muted);
+    font-size: 0.85em;
+}
+
+.obcm-mgr-warn {
+    color: var(--text-warning, #e0ac00);
+    display: inline-flex;
+}
+
+.obcm-mgr-warn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.obcm-mgr-path {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    margin-top: 2px;
+    word-break: break-all;
+}
+
+.obcm-mgr-row.is-invalid .obcm-mgr-path {
+    color: var(--text-warning, #e0ac00);
+}
+
+.obcm-mgr-ops {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.obcm-mgr-actionbar {
+    margin-top: 12px;
+    border-top: 1px solid var(--background-modifier-border);
+    padding-top: 10px;
+}
+
+/* 失效挂载编辑表单 */
+
+.obcm-mgr-edit {
+    border-left: 2px solid var(--background-modifier-border);
+    margin: 4px 0 8px 12px;
+    padding: 8px 12px;
+}
+
+.obcm-mgr-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+.obcm-mgr-field label {
+    font-size: 0.85em;
+    color: var(--text-muted);
+}
+
+.obcm-mgr-input {
+    width: 100%;
+}
