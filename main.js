@@ -756,25 +756,31 @@ var MountRenderer = class {
   }
   /** 顶层条目插入锚点 childrenEl：文件夹挂载进文件夹区尾部，文件条目按名入文件区 */
   insertIntoAnchor(childrenEl, el, name, isFolder) {
+    const cmp = (n) => name.localeCompare(n, void 0, { numeric: true, sensitivity: "base" }) <= 0;
     if (isFolder) {
-      let last = null;
+      let insertBefore = null;
       for (const sib of Array.from(childrenEl.children)) {
-        if (sib.classList.contains("nav-folder")) last = sib;
+        if (!sib.classList.contains("nav-folder")) {
+          if (insertBefore === null && sib.classList.contains("nav-file")) insertBefore = sib;
+          continue;
+        }
+        if (sib === el) continue;
+        const sibName = this.readItemName(sib);
+        if (sibName !== null && cmp(sibName)) {
+          childrenEl.insertBefore(el, sib);
+          return;
+        }
       }
-      if (last && last.nextSibling) childrenEl.insertBefore(el, last.nextSibling);
-      else if (last) childrenEl.insertBefore(el, last.nextSibling);
-      else {
-        const firstFile = childrenEl.querySelector(":scope > .nav-file");
-        if (firstFile) childrenEl.insertBefore(el, firstFile);
-        else childrenEl.appendChild(el);
-      }
+      if (insertBefore) childrenEl.insertBefore(el, insertBefore);
+      else childrenEl.appendChild(el);
       return;
     }
     for (const sib of Array.from(childrenEl.children)) {
       if (!sib.classList.contains("nav-file")) continue;
+      if (sib === el) continue;
       if (sib.classList.contains(MOUNT_CLS) || sib.classList.contains(INHERITED_CLS)) continue;
       const sibName = this.readItemName(sib);
-      if (sibName !== null && name.localeCompare(sibName, void 0, { numeric: true, sensitivity: "base" }) <= 0) {
+      if (sibName !== null && cmp(sibName)) {
         childrenEl.insertBefore(el, sib);
         return;
       }
@@ -784,13 +790,15 @@ var MountRenderer = class {
   readItemName(el) {
     var _a, _b, _c;
     try {
+      const own = el.querySelector(".obcm-name");
+      if (own == null ? void 0 : own.textContent) return own.textContent.trim();
       const self = el.querySelector(".tree-item-self");
       const p = (_a = self == null ? void 0 : self.dataset) == null ? void 0 : _a.path;
       if (p) {
         const af = this.vault.getAbstractFileByPath(p);
         if (af) return af.name;
       }
-      const inner = el.querySelector(".nav-file-title-content");
+      const inner = el.querySelector(".nav-file-title-content, .nav-folder-title-content");
       return (_c = (_b = inner == null ? void 0 : inner.textContent) == null ? void 0 : _b.trim()) != null ? _c : null;
     } catch (e) {
       return null;

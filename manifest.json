@@ -1,9 +1,9 @@
 {
   "id": "clone-mount",
   "name": "Clone Mount",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "minAppVersion": "1.4.0",
-  "description": "Trilium-style clone mounts: render existing notes as virtual entries inside the native file explorer folder tree. Probe build.",
+  "description": "Trilium-style clone mounts: render existing notes as virtual entries inside the native file explorer folder tree.",
   "author": "xiehui",
   "authorUrl": "",
   "isDesktopOnly": false

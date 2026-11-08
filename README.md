@@ -1,4 +1,4 @@
-# Obsidian Clone Mount
+# Clone Mount
 
 **在 Obsidian 原生文件树里模拟 Trilium 的克隆（branch）**：把同一个笔记或文件夹"挂"到文件树的多个位置——单一文件源、零复制、磁盘零改动。
 
@@ -39,11 +39,11 @@
 
 ## 安装
 
-1. 将 `clone-mount-probe/` 整个文件夹复制到 `<你的库>/.obsidian/plugins/` 下
+1. 将 `clone-mount/` 整个文件夹复制到 `<你的库>/.obsidian/plugins/` 下
 2. 设置 → 第三方插件 → 刷新 → 启用 "Clone Mount"
 3. 无任何配置，右键任一笔记即出现挂载入口
 
-**系统要求**：Obsidian 1.14+ 桌面版（在 1.15.0 实测通过；Explorer 需为默认核心插件）。
+**系统要求**：Obsidian 1.14+，桌面与移动端（双端 1.15.0 实测通过；Explorer 需为默认核心插件）。移动端右键=长按。
 
 ## 使用
 
@@ -68,7 +68,7 @@
 
 ## 数据格式
 
-`.obsidian/plugins/clone-mount-probe/data.json`：
+`.obsidian/plugins/clone-mount/data.json`：
 
 ```json
 {
@@ -112,6 +112,7 @@
 
 ## 版本历史
 
+- **0.4.2** — 修复挂载条目排序：文件夹挂载此前固定追加到文件夹区末尾，现统一按名插入正确位置（别名参与排序）
 - **0.4.1** — 修复"在真实位置显示"丢失 this 导致的静默失败；改用视图原生 reveal（含祖先链展开）
 - **0.4.0** — 挂载显示名（branch prefix）：per-branch 别名 + 排序联动 + key 自动迁移
 - **0.3.0** — 文件夹挂载（子树克隆）：递归虚拟文件夹 + 懒渲染 + 防环
