@@ -1,0 +1,39 @@
+/* Clone Mount (probe) — 虚拟挂载条目样式（极简，仅结构色/主题变量） */
+
+.obcm-mount .tree-item-self,
+.obcm-inherited .tree-item-self {
+    cursor: pointer;
+}
+
+.obcm-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 4px;
+    flex-shrink: 0;
+    opacity: 0.45;
+}
+
+.obcm-badge svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* 继承条目（文件夹挂载的子内容）badge 更淡，与独立挂载区分 */
+.obcm-inherited .obcm-badge {
+    opacity: 0.3;
+}
+
+/* 当前打开文件在挂载点的高亮（同真实条目的 is-active 视觉） */
+.obcm-mount-title.is-active {
+    color: var(--text-accent);
+    background-color: var(--background-modifier-hover);
+}
+
+.obcm-mount-title.is-active .obcm-badge {
+    opacity: 0.9;
+}
+
+/* 虚拟文件夹子内容容器缩进对齐原生层级 */
+.obcm-children {
+    padding-left: var(--nav-indent);
+}
